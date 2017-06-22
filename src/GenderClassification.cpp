@@ -1,9 +1,9 @@
 #include "GenderClassification.h"
 
 /*
-	Method : initNetwork
+Method : initNetwork
 
-	Read network architecture Frmo model_file and apply weights from weight_file
+Read network architecture Frmo model_file and apply weights from weight_file
 */
 void GenderNet::initNetwork()
 {
@@ -15,20 +15,20 @@ void GenderNet::initNetwork()
 }
 
 /*
-	Method : getMeanImgFromMeanFile
+Method : getMeanImgFromMeanFile
 
-	Get cv::Mat from mean_file.
-	This work goes through the steps below.
+Get cv::Mat from mean_file.
+This work goes through the steps below.
 
-	1. Get BlobProto from mean_file.
-	2. Make Blob using BlobProto
-	3. Make three cv::Mat(one Mat per channel) using Blob
-	4. Merge three channels Mat.
-	5. Get cv::Scalar(one value per channel) with the mean values of each channel(mean value of R channel,... and so on).
-	6. Make mean img with this scalar.
+1. Get BlobProto from mean_file.
+2. Make Blob using BlobProto
+3. Make three cv::Mat(one Mat per channel) using Blob
+4. Merge three channels Mat.
+5. Get cv::Scalar(one value per channel) with the mean values of each channel(mean value of R channel,... and so on).
+6. Make mean img with this scalar.
 
-	Param :
-	1. _mean_img : [output] mean image 
+Param :
+1. _mean_img : [output] mean image 
 */
 void GenderNet::getMeanImgFromMeanFile(Mat& _mean_img)
 {
@@ -56,19 +56,19 @@ void GenderNet::getMeanImgFromMeanFile(Mat& _mean_img)
 }
 
 /*
-	Method : makeBlobVecWithCroppedImg
+Method : makeBlobVecWithCroppedImg
 
-	This is a kind of useful technique to make performance better.
+This is a kind of useful technique to make performance better.
 
-	1. Resize image to 256 x 256
-	2. Subtract mean image
-	3. Get 5(left top, right top, left bottom, right bottom, center) cropped images with size of 227 x 227.
-	4. Make Blob of those 5 images.
-	5. Make Blob vector.
+1. Resize image to 256 x 256
+2. Subtract mean image
+3. Get 5(left top, right top, left bottom, right bottom, center) cropped images with size of 227 x 227.
+4. Make Blob of those 5 images.
+5. Make Blob vector.
 
-	Param :
-	1. _img : [in] input image
-	2. _blob_vec : [out] output blob vector made by five cropped image of _img.
+Param :
+1. _img : [in] input image
+2. _blob_vec : [out] output blob vector made by five cropped image of _img.
 */
 void GenderNet::makeBlobVecWithCroppedImg(Mat _img, vector<Blob<Dtype> *>& _blob_vec)
 {
@@ -110,18 +110,18 @@ void GenderNet::makeBlobVecWithCroppedImg(Mat _img, vector<Blob<Dtype> *>& _blob
 }
 
 /*
-	Method : classify
+Method : classify
 
-	Classify gender of person in the image.
+Classify gender of person in the image.
 
-	1. Crop image into 5 images and get a blob vector which contains 5 blobs.
-	2. Get probabilities of each image. Finally, you got 5 probabilities.
-	3. Get average probabilities of these 5 blobs.
-	4. Get the bigger probability, male or female.
+1. Crop image into 5 images and get a blob vector which contains 5 blobs.
+2. Get probabilities of each image. Finally, you got 5 probabilities.
+3. Get average probabilities of these 5 blobs.
+4. Get the bigger probability, male or female.
 
-	Param :
-	1. _img : [in] input image
-	2. _prob_vec : [out] probabilities of male and female
+Param :
+1. _img : [in] input image
+2. _prob_vec : [out] probabilities of male and female
 */
 int GenderNet::classify(Mat _img, vector<Dtype>& _prob_vec)
 {
