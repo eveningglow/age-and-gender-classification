@@ -6,15 +6,15 @@ using namespace cv;
 using namespace caffe;
 
 /*
-	Method : printResult
+Method : printResult
 
-	Print classify result on console.
+Print classify result on console.
 
-	Param :
-	1. _gender : [in] classified result
-	2. _age : [in] classified result
-	3. _prob_gender : [in] probabilities of male and female
-	4. _prob_age : [in] probabilities of each age
+Param :
+1. _gender : [in] classified result
+2. _age : [in] classified result
+3. _prob_gender : [in] probabilities of male and female
+4. _prob_age : [in] probabilities of each age
 */
 void printResult(int _gender, int _age, vector<Dtype> _prob_gender, vector<Dtype> _prob_age)
 {
