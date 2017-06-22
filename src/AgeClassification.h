@@ -28,7 +28,7 @@ class AgeNet
 {
 private:
 	string	model_file;			// model file path (deep_age2.prototxt)
-	string	weight_file;		// weight file path (age_net.caffemodel)
+	string	weight_file;			// weight file path (age_net.caffemodel)
 	string	mean_file;			// mean file path (mean.binaryproto)
 
 	std::shared_ptr<Net<Dtype>> age_net;		// Deep Convolution Network
