@@ -20,16 +20,16 @@ using namespace cv;
 typedef double Dtype;
 
 /*
-	Class : GenderNet
+Class : GenderNet
 	
-	This class is resopnsible for classifying gender with given face image.
+This class is resopnsible for classifying gender with given face image.
 */
 
 class GenderNet
 {
 private:
 	string	model_file;			// model file path (deep_gender2.prototxt)
-	string	weight_file;		// weight file path (gender_net.caffemodel)
+	string	weight_file;			// weight file path (gender_net.caffemodel)
 	string	mean_file;			// mean file path (mean.binaryproto)
 
 	std::shared_ptr<Net<Dtype>> gender_net;		// Deep Convolution Network
