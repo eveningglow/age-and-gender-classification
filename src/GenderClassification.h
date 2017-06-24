@@ -50,7 +50,7 @@ public:
 	// Get cv::Mat from mean_file
 	void getMeanImgFromMeanFile(Mat& _mean_img);
 
-	// Get blob vector which contains 5 input blobs (Details below in implementation)
+	// Get blob vector which contains 5 input blobs (Details in implementation)
 	void makeBlobVecWithCroppedImg(Mat _img, vector<Blob<Dtype> *>& _blob_vec);
 
 	// Classify gender and get probability
